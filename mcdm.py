@@ -5,19 +5,28 @@ myFactors = [ ]
 #  this is new changes from a new branch
 # now its true
 
-def end(x):
-    print(f"yeahhhhhh:{x}")
-def gcd(x):
-    for factor in allFactors:
-        reminder = x % factor
-        if reminder == 0:
-            div = int(x / factor)
+def end(x,y):
+    print(f"yeahhhhhh:{x} {y}")
+
+
+def gcd(x,y):
+    if x and y == 1:
+             print(myFactors)
+             return end(x,y)
+    else:
+        for factor in allFactors:
+         reminderX = x % factor
+         reminderY = y % factor
+         
+         if reminderX  == 0:
+            x = int(x / factor)
+         if reminderY == 0:
+            y = int(y / factor)
+        
+         if reminderX or reminderY == 0:
             myFactors.append(factor)
-            if div == 1:
-                print(myFactors)
-                return end(div)
-            else:
-                return gcd(div)
+            return gcd(x, y)
+
 # def firstDivition(x):
 #     for factor in allFactors:
 #         reminder = x % factor
@@ -28,6 +37,6 @@ def gcd(x):
 #                 return end(div)
 #             else:
 #                  print("oh not")
-myNumber = gcd(21)
+myNumber = gcd(21,14)
 
 
