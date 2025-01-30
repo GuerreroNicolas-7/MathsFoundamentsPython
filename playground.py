@@ -1,9 +1,11 @@
-def fact(x):
- if x == 1:
-    return 1
- else:
-    return x * fact(x-1)
- 
- 
- 
-print(fact(3))
+def make_counter():
+    count = 0
+    def counter():
+        nonlocal count
+        count += 1
+        return count
+    return counter
+
+my_counter = make_counter()
+print(my_counter())  # Output: 1
+print(my_counter())  # Output: 2
