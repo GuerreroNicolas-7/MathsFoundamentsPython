@@ -1,38 +1,25 @@
 # cd  C:/Users/USUARIO/Documentos/U/Math
 allFactors = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 ]
-# allFactors = [2,3,4]
-myFactors = [ ]
+allMyFactors = [ ]
 myCommonFactors = []
-#  this is new changes from a new branch
-# now its true
-
-def end():
-     print (myFactors)
-     print (myCommonFactors)
-     result = 1
-     r = 1
-     for factor in myFactors:
-          result *= factor
-     print(f"The LCM of 21 and 14 is: {result}")
-     
-     for f in myCommonFactors:
-        r *= f
-     print(f"The GCD of 21 and 14 is: {r}")  
-          
-
-def gcd(x,y):
 
 
+
+def getFactors(x,y):
     if x == 1 and y == 1:
-             return end()
+             return
     else:
         for factor in allFactors:
+            # Check if its factor for my numbers
              xRemainder =   int(x % factor)
              yRemainder = int(y % factor)
+             # Get my common factors    
              if xRemainder == 0 and yRemainder == 0: 
                   myCommonFactors.append(factor)
+
+              # Get all the factors  
              if xRemainder == 0 or yRemainder == 0:
-                  myFactors.append(factor)
+                  allMyFactors.append(factor)
                   xDiv = x
                   yDiv = y
                   if xRemainder == 0:
@@ -40,9 +27,29 @@ def gcd(x,y):
                        
                   if yRemainder == 0: 
                         yDiv = int(y / factor)
-                        
-                  return gcd(xDiv,yDiv)
+                  # return with at least a new value to break they down again 
+                  return getFactors(xDiv,yDiv)
 
-myNumber = gcd(17,11)
+
+def mathMethods(methodtype):
+     result = 1
+     def inner_function():
+          for factor in methodtype:
+               nonlocal result
+               result *= factor
+
+          return result
+     return inner_function
+
+
+myNumbers = getFactors(10,5)
+LCM = mathMethods(allMyFactors)
+GCD = mathMethods(myCommonFactors)
+print(GCD())
+print(LCM())
+
+
+# OWN HIGH PROCEDUAL CHALLENGING QUESTIONS
+# what if I put for for a set empty?
 
 

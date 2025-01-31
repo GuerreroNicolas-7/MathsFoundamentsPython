@@ -1,11 +1,40 @@
-def make_counter():
-    count = 0
-    def counter():
-        nonlocal count
-        count += 1
-        return count
-    return counter
+def multiplier(factor):
+    def inner_function(number):
+        return number * factor
+    return inner_function
 
-my_counter = make_counter()
-print(my_counter())  # Output: 1
-print(my_counter())  # Output: 2
+
+
+
+# Create multiplier functions using the factory function
+double = multiplier(2)
+triple = multiplier(3)
+
+# Use the generated functions
+print(double(5))  # Output: 10
+print(triple(5))  # Output: 15
+
+
+
+
+
+# Define an empty set
+empty_set = set()
+
+# For loop over the empty set
+for element in empty_set:
+    print(element)
+
+# This loop body will not execute because the set is empty
+print("Loop completed")
+
+# Define an empty list
+empty_list = []
+
+# For loop over the empty list
+for element in empty_list:
+    print(element)
+    print("hello")
+
+# This loop body will not execute because the list is empty
+print("Loop completed")
