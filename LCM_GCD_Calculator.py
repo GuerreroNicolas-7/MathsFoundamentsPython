@@ -42,7 +42,7 @@ def mathMethods(methodtype):
      return inner_function
 
 
-myNumbers = getFactors(10,5)
+myNumbers = getFactors(11,5)
 LCM = mathMethods(allMyFactors)
 GCD = mathMethods(myCommonFactors)
 print(GCD())
